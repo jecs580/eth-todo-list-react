@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
-import Web3 from 'web3';
+import Web3 from "web3";
 import { TODO_LIST_ABI, TODO_LIST_ADDRESS } from "./config";
 import "./App.css";
-
+import TodoList from './TodoList';
 function App() {
   const [account, setAccount] = useState("");
   const [taskCount, setTaskCount] = useState(0);
-  const [tasks,setTasks]=useState([]);
+  const [tasks, setTasks] = useState([]);
+  const [loading, setLoading] = useState(true);
   async function loadBlockChainData() {
     if (typeof window.ethereum !== "undefined") {
       const web3 = new Web3(Web3.givenProvider || "http://127.0.0.1:7645");
@@ -19,11 +20,11 @@ function App() {
       const todoList = new web3.eth.Contract(TODO_LIST_ABI, TODO_LIST_ADDRESS);
       const taskC = await todoList.methods.taskCount().call();
       setTaskCount(taskC);
-      for (let i = 0; i <=taskC; i++) {
+      for (let i = 0; i <= taskC; i++) {
         const task = await todoList.methods.tasks(i).call();
-        setTasks([...tasks,task])
+        setTasks([...tasks, task]);
       }
-      console.log(tasks);
+      setLoading(false);
     } else {
       window.alert("No tienes instalado Metamask");
     }
@@ -51,34 +52,13 @@ function App() {
       <div className="container">
         <div className="row">
           <main role="main" className="col-lg-12 d-flex justify-content-center">
-            <div id="loader" className="text-center">
-              <p className="text-center">Loading...</p>
-            </div>
-            <div id="content">
-              <form>
-                <input
-                  id="newTask"
-                  type="text"
-                  className="form-control"
-                  placeholder="Agregar tarea..."
-                  required
-                />
-                <input type="submit" className="btn btn-primary btn-block mt-3" hidden="" />
-              </form>
-              <ul id="taskList" className="list-unstyled">
-                {
-                  tasks.map((task)=>(
-                      <div className="taskTemplate" key={task.id}>
-                        <label htmlFor="">
-                          <input type="checkbox" name="" id=""/>
-                          <span className="ml-3 content">{task.content}</span>
-                        </label>
-                      </div>
-                  ))
-                }
-              </ul>
-              <ul id="completedTaskList" className="list-unstyled"></ul>
-            </div>
+            {loading ? (
+              <div id="loader" className="text-center">
+                <p className="text-center">Loading...</p>
+              </div>
+            ) : (
+                <TodoList tasks={tasks}/>
+            )}
           </main>
         </div>
       </div>
