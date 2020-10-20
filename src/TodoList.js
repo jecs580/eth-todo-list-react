@@ -1,7 +1,5 @@
 import React,{useState} from "react";
-// import Web3 from "web3";
-// import { TODO_LIST_ABI, TODO_LIST_ADDRESS } from "./config";
-function TodoList({tasks, createTask}) {
+function TodoList({tasks, createTask, completed}) {
     const [value,setValue] = useState('');
     const handleSubmit = (e)=>{
         e.preventDefault();
@@ -9,6 +7,10 @@ function TodoList({tasks, createTask}) {
     }
     const handleInputChange=(e)=>{
         setValue(e.target.value);
+    }
+    const Completed= (id)=>{
+        console.log(id);
+        completed(id);
     }
     return (
         <div id="content">
@@ -32,7 +34,7 @@ function TodoList({tasks, createTask}) {
             {tasks.map((task) => (
             <div className="taskTemplate" key={task.id}>
                 <label htmlFor="">
-                <input type="checkbox" name="" id="" />
+                <input type="checkbox" defaultChecked={task.completed} onChange={()=>Completed(task.id)} name="" id="" />
                 <span className="ml-3 content">{task.content}</span>
                 </label>
             </div>

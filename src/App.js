@@ -39,6 +39,15 @@ function App() {
         setLoading(false);
       });
   };
+  const completed = async(taskId) => {
+    setLoading(true);
+    await todoList.methods
+      .toggleCompleted(taskId)
+      .send({ from: account })
+      .on("receipt", (receipt) => {
+        setLoading(false);
+      });
+  }; 
   useEffect(() => {
     loadBlockChainData();
   }, []);
@@ -67,7 +76,7 @@ function App() {
                 <p className="text-center">Loading...</p>
               </div>
             ) : (
-              <TodoList tasks={tasks} createTask={createTask}/>
+              <TodoList tasks={tasks} createTask={createTask} completed={completed}/>
             )}
           </main>
         </div>
