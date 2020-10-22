@@ -1,129 +1,117 @@
-export const TODO_LIST_ADDRESS = '0xB468592c587898b7F2F15c3B8e1fb20D352B2e7c'
+export const TODO_LIST_ADDRESS = '0xeE3131e6BBF9c59c440874152106d94642Ad077d'
 export const TODO_LIST_ABI=[
   {
-    "inputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "constructor"
+      "name": "tasks",
+      "type": "function",
+      "inputs": [
+          {
+              "name": "",
+              "type": "uint256"
+          }
+      ],
+      "outputs": [
+          {
+              "name": "id",
+              "type": "uint256"
+          },
+          {
+              "name": "content",
+              "type": "string"
+          },
+          {
+              "name": "completed",
+              "type": "bool"
+          }
+      ],
+      "payable": false,
+      "constant": true,
+      "stateMutability": "view"
   },
   {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "id",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "bool",
-        "name": "completed",
-        "type": "bool"
-      }
-    ],
-    "name": "TaskCompleted",
-    "type": "event"
+      "name": "taskCount",
+      "type": "function",
+      "inputs": [],
+      "outputs": [
+          {
+              "name": "",
+              "type": "uint256"
+          }
+      ],
+      "payable": false,
+      "constant": true,
+      "stateMutability": "view"
   },
   {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "id",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "string",
-        "name": "content",
-        "type": "string"
-      },
-      {
-        "indexed": false,
-        "internalType": "bool",
-        "name": "completed",
-        "type": "bool"
-      }
-    ],
-    "name": "TaskCreated",
-    "type": "event"
+      "type": "constructor",
+      "inputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable"
   },
   {
-    "constant": true,
-    "inputs": [],
-    "name": "taskCount",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
+      "name": "TaskCreated",
+      "type": "event",
+      "inputs": [
+          {
+              "name": "id",
+              "type": "uint256",
+              "indexed": false
+          },
+          {
+              "name": "content",
+              "type": "string",
+              "indexed": false
+          },
+          {
+              "name": "completed",
+              "type": "bool",
+              "indexed": false
+          }
+      ],
+      "anonymous": false
   },
   {
-    "constant": true,
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "name": "tasks",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "id",
-        "type": "uint256"
-      },
-      {
-        "internalType": "string",
-        "name": "content",
-        "type": "string"
-      },
-      {
-        "internalType": "bool",
-        "name": "completed",
-        "type": "bool"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
+      "name": "TaskCompleted",
+      "type": "event",
+      "inputs": [
+          {
+              "name": "id",
+              "type": "uint256",
+              "indexed": false
+          },
+          {
+              "name": "completed",
+              "type": "bool",
+              "indexed": false
+          }
+      ],
+      "anonymous": false
   },
   {
-    "constant": false,
-    "inputs": [
-      {
-        "internalType": "string",
-        "name": "_content",
-        "type": "string"
-      }
-    ],
-    "name": "createTask",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
+      "name": "createTask",
+      "type": "function",
+      "inputs": [
+          {
+              "name": "_content",
+              "type": "string"
+          }
+      ],
+      "outputs": [],
+      "payable": false,
+      "constant": false,
+      "stateMutability": "nonpayable"
   },
   {
-    "constant": false,
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "_id",
-        "type": "uint256"
-      }
-    ],
-    "name": "toggleCompleted",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
+      "name": "toggleCompleted",
+      "type": "function",
+      "inputs": [
+          {
+              "name": "_id",
+              "type": "uint256"
+          }
+      ],
+      "outputs": [],
+      "payable": false,
+      "constant": false,
+      "stateMutability": "nonpayable"
   }
 ]
