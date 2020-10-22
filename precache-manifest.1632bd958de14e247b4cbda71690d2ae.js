@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "8002afc632d783122ab808c9b5f0da30",
+    "revision": "03d7f43ef3eadb6db4bf8902a0ede325",
     "url": "/eth-todo-list-react/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/eth-todo-list-react/static/css/2.2a86faee.chunk.css"
   },
   {
-    "revision": "5251a4b566fab9967608",
+    "revision": "3a312451cf9aea09be04",
     "url": "/eth-todo-list-react/static/css/main.93b97114.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/eth-todo-list-react/static/js/2.b8b1288e.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "5251a4b566fab9967608",
-    "url": "/eth-todo-list-react/static/js/main.75f472f8.chunk.js"
+    "revision": "3a312451cf9aea09be04",
+    "url": "/eth-todo-list-react/static/js/main.ab780911.chunk.js"
   },
   {
     "revision": "cd340af59254b9d2c48e",
